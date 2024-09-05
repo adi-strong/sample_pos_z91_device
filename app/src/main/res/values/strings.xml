@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NEXT Biometrics Devices Sample</string>
+    <string name="title_activity_capture">Fingerprint capture</string>
+    <string name="cmd_log_label">Application Log:</string>
+
+    <string name="btn_scan_ex">SCAN</string>
+    <string name="btn_scan">SCAN SNAPSHOT</string>
+    <string name="btn_status">STATUS</string>
+    <string name="btn_test">RUN</string>
+    <string name="device_state">Device state: </string>
+    <string name="scan_status">Scan status: </string>
+    <string name="scan_in_progress">Scanning fingerprint …</string>
+    <string name="scan_failed">Scan failed. Reason: </string>
+    <string name="scan_start">Press SCAN to start fingerprint capture</string>
+    <string name="device_not_connected">Device is not connected …</string>
+    <string name="welcome_message">Welcome to NEXT Biometrics Devices Sample!</string>
+    <string name="library_version">NBDevices library version: </string>
+    <string name="welcome_message_continue">To continue, please choose a desired command below and press RUN button.</string>
+    <string name="device_id">Device id: </string>
+    <string name="device_manufacturer">Device manufacturer: </string>
+    <string name="device_model">Device model: </string>
+    <string name="device_serialnumber">Device serial number: </string>
+    <string name="module_serialnumber">Module serial number: </string>
+    <string name="device_product">Device product: </string>
+    <string name="device_type">Device type: </string>
+    <string name="device_connection_type">Device connection type: </string>
+    <string name="device_firmware_version">Device firmware version: </string>
+    <string name="device_supported_formats">Device supported formats: </string>
+    <string name="finger_detect_value">Finger detect value: </string>
+    <string name="device_has_been_reset">Device has been reset</string>
+    <string name="unknown_command">Unknown command</string>
+    <string name="btn_cancel">CANCEL</string>
+
+    <string-array name="sensor_cmd_list">
+        <item>CONNECT_TO_SPI</item>
+        <item>GET_STATUS</item>
+        <item>GET_FINGER_DETECT_VALUE</item>
+        <item>SCAN</item>
+        <item>SOFT_RESET</item>
+    </string-array>
+</resources>

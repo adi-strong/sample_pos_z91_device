@@ -1,0 +1,84 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+apply plugin: 'com.android.application'
+version = '3.0.0.0'
+description = "NBDevices Sample Android"
+
+project.ext.archivesBaseName = "nbdevices-sample-android"
+project.ext.defaultArchitectures = "arm64-v8a,armeabi-v7a,armeabi"
+
+project.ext.productRootDir = "../.."
+project.ext.productBinDir = new File(project.productRootDir, "Bin")
+project.ext.productBinJavaDir = new File(project.productBinDir, "Java")
+project.ext.productBinAndroidDir = new File(project.productBinDir, "Android")
+project.ext.productLibAndroidDir = new File(project.productRootDir, "Lib/Android")
+
+project.ext.nativeLibs = ["**/libjnidispatch.so",
+                          "**/libusb-1.0-nb.so",
+                          "**/libNBDevices.so"]
+
+android {
+    namespace 'com.nextbiometrics.sample'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.nextbiometrics.sample"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ''
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            packagingOptions{
+                doNotStrip "*/armeabi/*.so"
+                doNotStrip "*/armeabi-v7a/*.so"
+                doNotStrip "*/arm64-v8a/*.so"
+            }
+        }
+    }
+
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+            version '3.22.1'
+        }
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation files('libs/core-3.2.1.jar')
+    implementation files('libs/emv_2.0.0_R240607.jar')
+    implementation files('libs/jna.jar')
+    implementation files('libs/nextbiometrics-devices-android.jar')
+    implementation files('libs/SmartPos_1.9.0_R240612.jar')
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
